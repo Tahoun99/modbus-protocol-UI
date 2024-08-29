@@ -1,0 +1,69 @@
+<div class="container">
+    <form>
+      <div class="form-group row mb-3">
+        <label for="ip" class="col-sm-2 col-form-label">IP</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="ip" [(ngModel)]="device.ip" name="ip">
+        </div>
+      </div>
+  
+      <div class="form-group row mb-3">
+        <label for="port" class="col-sm-2 col-form-label">Port</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="port" [(ngModel)]="device.port" name="port">
+        </div>
+      </div>
+  
+      <div class="form-group row mb-3">
+        <label for="name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="name" [(ngModel)]="device.name" name="name">
+        </div>
+      </div>
+  
+      <div class="form-group row mb-3">
+        <label for="model" class="col-sm-2 col-form-label">Model</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="model" [(ngModel)]="device.model" name="model">
+        </div>
+      </div>
+  
+      <div class="form-group row mb-3">
+        <label for="installationDate" class="col-sm-2 col-form-label">Installation Date</label>
+        <div class="col-sm-10">
+          <input type="date" class="form-control" id="installationDate" [(ngModel)]="device.installationDate" name="installationDate">
+        </div>
+      </div>
+  
+      <div class="form-group row mb-3">
+        <label for="lifeTime" class="col-sm-2 col-form-label">Life Time</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="lifeTime" [(ngModel)]="device.lifeTime" name="lifeTime">
+        </div>
+      </div>
+  
+      <div class="form-group row mb-3">
+        <label for="password" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="password" [(ngModel)]="device.password" name="password">
+        </div>
+      </div>
+  
+      <div class="form-group row mb-3">
+        <label for="manufacturCountry" class="col-sm-2 col-form-label">Manufacture Country</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="manufacturCountry" [(ngModel)]="device.manufacturCountry" name="manufacturCountry">
+        </div>
+      </div>
+  
+      <div class="form-group row mb-3">
+        <label for="branch" class="col-sm-2 col-form-label">Branch</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="branch" [(ngModel)]="device.branch" name="branch">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Save</button>
+      <div></div>
+    </form>
+  </div>
+  
