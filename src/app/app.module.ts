@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { ReadingsComponent } from './readings/readings.component';
 import { DeviceFormComponent } from './add-edit-device/add-edit-device.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

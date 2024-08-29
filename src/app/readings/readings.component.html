@@ -1,1 +1,56 @@
-<p>readings works!</p>
+<!-- <div class="container">
+    <h2>{{ deviceName }}</h2>
+    
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Date and Time</th>
+          <th>Voltage (V)</th>
+          <th>Current (A)</th>
+          <th>Watt (W)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of deviceData">
+          <td>{{ row.dateTime | date:'short' }}</td>
+          <td>{{ row.voltage }}</td>
+          <td>{{ row.current }}</td>
+          <td>{{ row.watt }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+   -->
+
+<div class="container">
+    <h2>{{ deviceName }}</h2>
+
+    <!-- Dropdown Menu for Filtering -->
+    <div class="form-group">
+        <label for="filterType">Filter by Type:</label>
+        <select id="filterType" class="form-control" [(ngModel)]="selectedType" (change)="filterData()" value="all">
+            <option value="all">All</option>
+            <option value="watt">Watt</option>
+            <option value="current">Current</option>
+            <option value="voltage">Voltage</option>
+        </select>
+    </div>
+
+    <!-- Updated Table Structure -->
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Type</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of filteredData">
+                <td>{{ row.dateTime | date:'short' }}</td>
+                <td>{{ row.type }}</td>
+                <td>{{ row.value }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
