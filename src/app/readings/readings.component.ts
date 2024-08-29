@@ -28,7 +28,7 @@ export class ReadingsComponent implements OnInit {
     },
     {
       dateTime: new Date(),
-      type: 'watt',
+      type: 'power',
       value: 0
     }
   ];
