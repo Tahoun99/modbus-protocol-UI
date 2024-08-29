@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="header">
+      <button class="tab active">Devices</button>
+      <button class="tab">Add a new device</button>
+    </div>
+  
+    <div class="device-list">
+      <div class="device-item" *ngFor="let device of devices">
+        <span>{{ device.name }}</span>
+        <div class="actions">
+          <button class="edit-btn">Edit</button>
+          <button class="readings-btn">Readings</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

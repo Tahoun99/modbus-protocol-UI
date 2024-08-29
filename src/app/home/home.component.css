@@ -1,0 +1,49 @@
+.container {
+    border: 2px solid #000;
+    padding: 10px;
+    width: 600px;
+    margin: 0 auto;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    padding: 10px;
+    border: 2px solid #000;
+    cursor: pointer;
+  }
+  
+  .active {
+    background-color: #ccc;
+  }
+  
+  .device-list {
+    border: 2px solid #000;
+  }
+  
+  .device-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #000;
+  }
+  
+  .device-item:last-child {
+    border-bottom: none;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .edit-btn, .readings-btn {
+    padding: 5px 10px;
+    border: 2px solid #000;
+    cursor: pointer;
+  }
+  
