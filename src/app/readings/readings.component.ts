@@ -1,86 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-interface DeviceData {
-  dateTime: Date;
-  type: string;
-  value: number;
-}
+import { ReadingsService } from '../services/readings.service';
+import { Device } from '../models/device-model';
 
 @Component({
   selector: 'app-readings',
   templateUrl: './readings.component.html',
-  styleUrls: ['./readings.component.css']
+  styleUrls: ['./readings.component.css'],
 })
 export class ReadingsComponent implements OnInit {
+  device: Device = {
+    id: 1,
+    ip: '123',
+    port: '123',
+  };
 
-  deviceName: string = 'Device Name'; // You can dynamically set this based on the device
-  deviceData: DeviceData[] = [
-    {
-      dateTime: new Date(),
-      type: 'voltage',
-      value: 0
-    },
-    {
-      dateTime: new Date(),
-      type: 'current',
-      value: 0
-    },
-    {
-      dateTime: new Date(),
-      type: 'power',
-      value: 0
-    }
-  ];
-  filteredData: DeviceData[] = [];
+  deviceData: Device[];
+  filteredData: Device[];
   selectedType: string = 'all';
 
-  constructor(private http: HttpClient) {}
+  constructor(private readingServices: ReadingsService) {}
 
   ngOnInit() {
-    this.filterData()
-    // this.fetchDeviceData();
+    this.readingServices.getReadings(1).subscribe((data) => {
+      console.log(data);
+      this.deviceData = data;
+      this.filterData();
+    });
   }
-
-  // fetchDeviceData() {
-  //   // Replace with your actual backend API endpoint
-  //   const apiUrl = 'https://your-backend-api.com/device/data';
-
-  //   this.http.get<DeviceData[]>(apiUrl).subscribe(data => {
-  //     this.deviceData = data;
-  //     this.filterData();
-  //   }, error => {
-  //     console.error('Error fetching device data', error);
-  //   });
-  // }
 
   filterData() {
     if (this.selectedType === 'all') {
       this.filteredData = this.deviceData;
     } else {
-      this.filteredData = this.deviceData.filter(item => item.type === this.selectedType);
+      this.filteredData = this.deviceData.filter(
+        (item) => item.type === this.selectedType
+      );
     }
   }
-
-  // deviceName: string = 'Device Name'; // You can dynamically set this based on the device
-  // deviceData = [
-  //   {
-  //     dateTime: Date.now(),
-  //     voltage: 0,
-  //     current: 0,
-  //     watt: 0
-  //   }
-  // ];
-
-  // constructor(private http: HttpClient) {}
-
-  // ngOnInit() {
-  //   this.fetchDeviceData();
-  // }
-
-  // fetchDeviceData() {
-  //   // Replace with your actual backend API endpoint
-  //   const apiUrl = 'https://your-backend-api.com/device/data';
-  // }
-
 }
