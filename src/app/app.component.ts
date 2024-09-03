@@ -2,6 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { DeviceService } from './services/device.service';
 import { Device } from './models/device-model';
 
+/**
+ * Represents the possible pages in the application.
+ * 1 for <app-home>
+ * 2 for <app-readings>
+ * 3 for <app-device-form>
+ */
+type PAGES = 1 | 2 | 3;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,17 +17,23 @@ import { Device } from './models/device-model';
 })
 export class AppComponent implements OnInit {
   devices: Device[];
+  currentPage: number = 1;
 
   constructor(private deviceServices: DeviceService) {}
 
   ngOnInit() {
-    this.deviceServices.getDevices().subscribe(
-      (data) => {
-        console.log(data);
-        this.devices = data;
-      },
-      (err) => this.handleRequestError(err)
-    );
+    // this.deviceServices.getDevices().subscribe(
+    //   (data) => {
+    //     console.log(data);
+    //     this.devices = data;
+    //   },
+    //   (err) => this.handleRequestError(err)
+    // );
+  }
+
+  onChangePage(page: number) {
+    this.currentPage = page;
+    console.log(page);
   }
 
   addDevice() {
