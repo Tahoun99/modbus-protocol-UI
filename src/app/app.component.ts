@@ -1,27 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DeviceService } from './services/device.service';
 import { Device } from './models/device-model';
-
-/**
- * Represents the possible pages in the application.
- * 1 for <app-home>
- * 2 for <app-readings>
- * 3 for <app-device-form>
- */
-type PAGES = 1 | 2 | 3;
+import { NavigationService } from './services/navigation.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   devices: Device[];
   currentPage: number = 1;
+  private navigationSubs: Subscription;
 
-  constructor(private deviceServices: DeviceService) {}
+  constructor(
+    private deviceServices: DeviceService,
+    private navigationServices: NavigationService
+  ) {}
+
+  gotor() {
+    this.currentPage = 3;
+  }
 
   ngOnInit() {
+    this.navigationSubs = this.navigationServices.message$.subscribe(
+      (pageNamber) => {
+        console.log(`From app: ${pageNamber}`);
+        this.currentPage = pageNamber;
+      }
+    );
+
     // this.deviceServices.getDevices().subscribe(
     //   (data) => {
     //     console.log(data);
@@ -31,9 +40,8 @@ export class AppComponent implements OnInit {
     // );
   }
 
-  onChangePage(page: number) {
-    this.currentPage = page;
-    console.log(page);
+  ngOnDestroy() {
+    this.navigationSubs.unsubscribe();
   }
 
   addDevice() {

@@ -1,47 +1,19 @@
-<!-- <div class="container-fluid p-0 mb-3">
-  <div class="row">
-    <div class="col"> -->
-<app-header (changePage)="onChangePage($event)"></app-header>
-<!-- </div>
-  </div>
-</div> -->
+<app-header (changePage)="onChangePage($event)" [currentPage]="currentPage"></app-header>
 
+<button (click)="gotor()">Test GOTO Readings</button>
 <div class="container">
   <div class="row">
     <div class="col" *ngIf="currentPage === 1">
       <app-home></app-home>
     </div>
     <div class="col" *ngIf="currentPage === 2">
-      <app-readings></app-readings>
+      <app-device-form></app-device-form>
     </div>
     <div class="col" *ngIf="currentPage === 3">
-      <app-device-form></app-device-form>
+      <app-readings></app-readings>
     </div>
   </div>
 </div>
-
-
-<!-- <div class="container-fluid p-0 mb-3">
-  <div class="row">
-    <div class="col">
-      <app-header (changePage)="onChangePage($event)"></app-header>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col" *ngIf="currentPage === 1">
-      <app-home></app-home>
-    </div>
-    <div class="col" *ngIf="currentPage === 2">
-      <app-readings></app-readings>
-    </div>
-    <div class="col" *ngIf="currentPage === 3">
-      <app-device-form></app-device-form>
-    </div>
-  </div>
-</div> -->
 
 
 <!-- <div *ngFor="let d of devices;">

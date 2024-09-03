@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { ReadingsComponent } from './readings/readings.component';
 import { DeviceFormComponent } from './add-edit-device/add-edit-device.component';
+import { NavigationService } from './services/navigation.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { DeviceFormComponent } from './add-edit-device/add-edit-device.component
     HeaderComponent,
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
-  providers: [],
+  providers: [NavigationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
