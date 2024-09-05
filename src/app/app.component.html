@@ -6,7 +6,7 @@
       <app-home [currentPage]="currentPage"></app-home>
     </div>
     <div class="col" *ngIf="currentPage === 2">
-      <app-device-form></app-device-form>
+      <app-device-form [deviceId]="wantedDeviceId"></app-device-form>
     </div>
     <div class="col" *ngIf="currentPage === 3">
       <app-readings [deviceId]="wantedDeviceId"></app-readings>

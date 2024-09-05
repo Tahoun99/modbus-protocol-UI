@@ -14,7 +14,7 @@ import { BranchService } from './services/branch.service';
 export class AppComponent implements OnInit, OnDestroy {
   devices: Device[];
   currentPage: number = 1;
-  wantedDeviceId: number;
+  wantedDeviceId: number = 0;
   private navigationSubs: Subscription;
 
   constructor(

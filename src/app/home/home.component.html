@@ -21,7 +21,7 @@
     <tr *ngFor="let device of devices" class="">
       <td>{{ device.name}}</td>
       <td class="text-end">
-        <button class="btn bg-dark text-white mx-2">Edit</button>
+        <button class="btn bg-dark text-white mx-2" (click)="toEdit(device.id)">Edit</button>
         <button class="btn bg-dark text-white mx-2" (click)="toReadings(device.id)">Readings</button>
       </td>
     </tr>

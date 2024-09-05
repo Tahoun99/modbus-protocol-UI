@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DeviceService } from '../services/device.service';
 
 @Component({
   selector: 'app-device-form',
   templateUrl: './add-edit-device.component.html',
-  styleUrls: ['./add-edit-device.component.css']
+  styleUrls: ['./add-edit-device.component.css'],
 })
 export class DeviceFormComponent implements OnInit {
   device = {
@@ -20,15 +20,26 @@ export class DeviceFormComponent implements OnInit {
     Maunfacturer: '',
     Made_In_Counry: '',
     state: 0,
-    branchId: 0
+    branchId: 0,
   };
+  isNewDevice = true;
+
+  @Input() deviceId: number = 0;
+
+  constructor(private deviceService: DeviceService) {}
 
   ngOnInit() {
+    if (!this.deviceId) {
+      this.isNewDevice = true;
+      return;
+    }
+
+    this.isNewDevice = false;
+
+    this.deviceService.getDevice(this.deviceId).subscribe((data) => {
+      console.log(data);
+    });
   }
-
-  constructor(private deviceService: DeviceService) { }
-
-  isNewDevice = true;
 
   // onSubmit() {
   //   if (this.isNewDevice) {
@@ -45,7 +56,7 @@ export class DeviceFormComponent implements OnInit {
   //     } else {
   //       console.error('Invalid device data');
   //     }
-  //   } 
+  //   }
   //   // else {
   //   //   if (this.validateDevice(this.device) && typeof this.device.id === 'number') {
   //   //     this.deviceService.updateDevice(this.device.id, this.device).subscribe(
@@ -60,10 +71,10 @@ export class DeviceFormComponent implements OnInit {
   //   //     console.error('Invalid device data or missing device ID');
   //   //   }
   //   // }
-  
+
   //   console.log('Form submitted:', this.device);
   // }
-  
+
   onSubmit() {
     if (this.isNewDevice) {
       if (this.validateDevice(this.device)) {
@@ -79,25 +90,25 @@ export class DeviceFormComponent implements OnInit {
       } else {
         console.error('Invalid device data');
       }
-    } 
-  //   else {
-  //     if (this.validateDevice(this.device) && typeof this.device.id === 'number') {
-  //       this.deviceService.updateDevice(this.device.id, this.device).subscribe(
-  //         (response) => {
-  //           console.log('Device updated successfully:', response);
-  //         },
-  //         (error) => {
-  //           console.error('Error updating device:', error);
-  //         }
-  //       );
-  //     } else {
-  //       console.error('Invalid device data or missing device ID');
-  //     }
-  //   }
-  
-  //   console.log('Form submitted:', this.device);
+    }
+    //   else {
+    //     if (this.validateDevice(this.device) && typeof this.device.id === 'number') {
+    //       this.deviceService.updateDevice(this.device.id, this.device).subscribe(
+    //         (response) => {
+    //           console.log('Device updated successfully:', response);
+    //         },
+    //         (error) => {
+    //           console.error('Error updating device:', error);
+    //         }
+    //       );
+    //     } else {
+    //       console.error('Invalid device data or missing device ID');
+    //     }
+    //   }
+
+    //   console.log('Form submitted:', this.device);
   }
-  
+
   validateDevice(device: any): boolean {
     if (
       typeof device.ip === 'string' &&

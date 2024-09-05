@@ -26,4 +26,8 @@ export class HomeComponent implements OnInit {
   toReadings(deviceId: number) {
     this.navigationServices.sendMessage(3, deviceId);
   }
+
+  toEdit(deviceId: number) {
+    this.navigationServices.sendMessage(2, deviceId);
+  }
 }
