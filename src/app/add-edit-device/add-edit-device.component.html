@@ -1,69 +1,100 @@
 <div class="container">
-    <form>
-      <div class="form-group row mb-3">
-        <label for="ip" class="col-sm-2 col-form-label">IP</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="ip" [(ngModel)]="device.ip" name="ip">
-        </div>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group row mb-3">
+      <label for="ip" class="col-sm-2 col-form-label">IP</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="ip" [(ngModel)]="device.ip" name="ip">
       </div>
-  
-      <div class="form-group row mb-3">
-        <label for="port" class="col-sm-2 col-form-label">Port</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="port" [(ngModel)]="device.port" name="port">
-        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+      <label for="port" class="col-sm-2 col-form-label">Port</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="port" [(ngModel)]="device.port" name="port">
       </div>
-  
-      <div class="form-group row mb-3">
-        <label for="name" class="col-sm-2 col-form-label">Name</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="name" [(ngModel)]="device.name" name="name">
-        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+      <label for="type" class="col-sm-2 col-form-label">Type</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="type" [(ngModel)]="device.type" name="type">
       </div>
-  
-      <div class="form-group row mb-3">
-        <label for="model" class="col-sm-2 col-form-label">Model</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="model" [(ngModel)]="device.model" name="model">
-        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+      <label for="name" class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="name" [(ngModel)]="device.name" name="name">
       </div>
-  
-      <div class="form-group row mb-3">
-        <label for="installationDate" class="col-sm-2 col-form-label">Installation Date</label>
-        <div class="col-sm-10">
-          <input type="date" class="form-control" id="installationDate" [(ngModel)]="device.installationDate" name="installationDate">
-        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+      <label for="model" class="col-sm-2 col-form-label">Model</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="model" [(ngModel)]="device.model" name="model">
       </div>
-  
-      <div class="form-group row mb-3">
-        <label for="lifeTime" class="col-sm-2 col-form-label">Life Time</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="lifeTime" [(ngModel)]="device.lifeTime" name="lifeTime">
-        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+      <label for="userName" class="col-sm-2 col-form-label">User Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="userName" [(ngModel)]="device.userName" name="userName">
       </div>
-  
-      <div class="form-group row mb-3">
-        <label for="password" class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-10">
-          <input type="password" class="form-control" id="password" [(ngModel)]="device.password" name="password">
-        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+      <label for="passWord" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="passWord" [(ngModel)]="device.passWord" name="passWord">
       </div>
-  
-      <div class="form-group row mb-3">
-        <label for="manufacturCountry" class="col-sm-2 col-form-label">Manufacture Country</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="manufacturCountry" [(ngModel)]="device.manufacturCountry" name="manufacturCountry">
-        </div>
+    </div>
+
+    <!-- <div class="form-group row mb-3">
+      <label for="installationDate" class="col-sm-2 col-form-label">Installation Date</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control" id="installationDate" [(ngModel)]="device.installation_Date"
+          name="installationDate">
       </div>
-  
-      <div class="form-group row mb-3">
-        <label for="branch" class="col-sm-2 col-form-label">Branch</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="branch" [(ngModel)]="device.branch" name="branch">
-        </div>
+    </div> -->
+
+    <div class="form-group row mb-3">
+      <label for="lifeTime" class="col-sm-2 col-form-label">Life Time</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="lifeTime" [(ngModel)]="device.Life_Time" name="lifeTime">
       </div>
-      <button type="submit" class="btn btn-primary bg-dark">Save</button>
-      <div></div>
-    </form>
-  </div>
-  
+    </div>
+
+    <div class="form-group row mb-3">
+      <label for="manufacturer" class="col-sm-2 col-form-label">Manufacturer</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="manufacturer" [(ngModel)]="device.Maunfacturer" name="manufacturer">
+      </div>
+    </div>
+
+    <div class="form-group row mb-3">
+      <label for="madeInCountry" class="col-sm-2 col-form-label">Made In Country</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="madeInCountry" [(ngModel)]="device.Made_In_Counry"
+          name="madeInCountry">
+      </div>
+    </div>
+
+    <div class="form-group row mb-3">
+      <label for="state" class="col-sm-2 col-form-label">State</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="state" [(ngModel)]="device.state" name="state">
+      </div>
+    </div>
+
+    <div class="form-group row mb-3">
+      <label for="branchId" class="col-sm-2 col-form-label">Branch ID</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="branchId" [(ngModel)]="device.branchId" name="branchId">
+      </div>
+    </div>
+
+    <button type="submit" class="btn text-white bg-dark">Save</button>
+
+    <br><br>
+  </form>
+</div>
