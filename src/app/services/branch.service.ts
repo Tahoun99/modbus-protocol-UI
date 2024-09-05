@@ -1,6 +1,7 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Branch } from '../models/branch-model'; // Assuming you have a Branch model
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class BranchService {
 
   constructor(private http: HttpClient) {}
 
-  getBranch(): Observable<any> {
-    return this.http.get(`${this.apiURL}/Branch`);
+  getBranches(): Observable<Branch[]> {
+    return this.http.get<Branch[]>(`${this.apiURL}/Branch`);
   }
 }

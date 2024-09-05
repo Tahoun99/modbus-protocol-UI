@@ -60,21 +60,21 @@
     <div class="form-group row mb-3">
       <label for="lifeTime" class="col-sm-2 col-form-label">Life Time</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="lifeTime" [(ngModel)]="device.Life_Time" name="lifeTime">
+        <input type="text" class="form-control" id="lifeTime" [(ngModel)]="device.life_Time" name="lifeTime">
       </div>
     </div>
 
     <div class="form-group row mb-3">
       <label for="manufacturer" class="col-sm-2 col-form-label">Manufacturer</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="manufacturer" [(ngModel)]="device.Maunfacturer" name="manufacturer">
+        <input type="text" class="form-control" id="manufacturer" [(ngModel)]="device.maunfacturer" name="manufacturer">
       </div>
     </div>
 
     <div class="form-group row mb-3">
       <label for="madeInCountry" class="col-sm-2 col-form-label">Made In Country</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="madeInCountry" [(ngModel)]="device.Made_In_Counry"
+        <input type="text" class="form-control" id="madeInCountry" [(ngModel)]="device.made_In_Counry"
           name="madeInCountry">
       </div>
     </div>
@@ -87,9 +87,11 @@
     </div>
 
     <div class="form-group row mb-3">
-      <label for="branchId" class="col-sm-2 col-form-label">Branch ID</label>
+      <label for="branchId" class="col-sm-2 col-form-label">Branch</label>
       <div class="col-sm-10">
-        <input type="number" class="form-control" id="branchId" [(ngModel)]="device.branchId" name="branchId">
+        <select class="form-control" id="branchId" [(ngModel)]="device.branchId" name="branchId">
+          <option *ngFor="let branch of branches" [value]="branch.id">{{ branch.address }}</option>
+        </select>
       </div>
     </div>
 
