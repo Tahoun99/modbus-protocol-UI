@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DeviceService } from '../services/device.service';
 
 @Component({
   selector: 'app-device-form',
@@ -18,13 +19,38 @@ export class DeviceFormComponent implements OnInit {
     branch: ''
   };
 
+  constructor(private deviceService: DeviceService) { }
+
+  isNewDevice = true;
+
   onSubmit() {
-    // Handle form submission here
+    if (this.isNewDevice) {
+      this.deviceService.addDevice(this.device).subscribe(
+        (response) => {
+          console.log('Device added successfully:', response);
+        },
+        (error) => {
+          console.error('Error adding device:', error);
+        }
+      );
+    } 
+    // else {
+    //   this.deviceService.updateDevice(this.device.id, this.device).subscribe(
+    //     (response) => {
+    //       console.log('Device updated successfully:', response);
+    //     },
+    //     (error) => {
+    //       console.error('Error updating device:', error);
+    //     }
+    //   );
+    // }
+  
     console.log('Form submitted:', this.device);
   }
 
-  constructor() { }
 
   ngOnInit() {
   }
 }
+
+
