@@ -3,6 +3,7 @@ import { NavigationService } from '../services/navigation.service';
 
 @Component({
   selector: 'app-header',
+  styleUrls: ['./header.component.css'],
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit {
@@ -13,8 +14,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {}
 
   changePage(pageNumber: number) {
-    console.log(`From header component: ${pageNumber}`);
-
     this.currentPage = pageNumber;
     this.navigationServices.sendMessage(pageNumber);
   }

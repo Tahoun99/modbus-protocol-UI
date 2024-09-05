@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { DeviceService } from './services/device.service';
 import { Device } from './models/device-model';
 import { NavigationService } from './services/navigation.service';
@@ -13,6 +13,7 @@ import { BrowserModule } from '@angular/platform-browser';
 export class AppComponent implements OnInit, OnDestroy {
   devices: Device[];
   currentPage: number = 1;
+  wantedDeviceId: number;
   private navigationSubs: Subscription;
 
   constructor(
@@ -25,12 +26,10 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.navigationSubs = this.navigationServices.message$.subscribe(
-      (pageNamber) => {
-        console.log(`From app: ${pageNamber}`);
-        this.currentPage = pageNamber;
-      }
-    );
+    this.navigationSubs = this.navigationServices.message$.subscribe((data) => {
+      this.wantedDeviceId = data.deviceId;
+      this.currentPage = data.pageNumber;
+    });
 
     // this.deviceServices.getDevices().subscribe(
     //   (data) => {

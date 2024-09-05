@@ -1,27 +1,15 @@
-<app-header (changePage)="onChangePage($event)" [currentPage]="currentPage"></app-header>
+<app-header [currentPage]="currentPage"></app-header>
 
-<button (click)="gotor()">Test GOTO Readings</button>
 <div class="container">
   <div class="row">
     <div class="col" *ngIf="currentPage === 1">
-      <app-home></app-home>
+      <app-home [currentPage]="currentPage"></app-home>
     </div>
     <div class="col" *ngIf="currentPage === 2">
       <app-device-form></app-device-form>
     </div>
     <div class="col" *ngIf="currentPage === 3">
-      <app-readings></app-readings>
+      <app-readings [deviceId]="wantedDeviceId"></app-readings>
     </div>
   </div>
 </div>
-
-
-<!-- <div *ngFor="let d of devices;">
-  <p>ID: {{ d.id }}</p>
-  <p> IP: {{ d.ip }}:{{ d.port }} </p>
-</div>
-
-<input type="button" value="Add" (click)="addDevice()">
-
-<input type="text" #in>
-<input type="button" value="Get" (click)="getDev(in.value)"> -->

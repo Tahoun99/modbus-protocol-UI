@@ -1,17 +1,29 @@
-<div class="container">
-  <div class="header">
-    <button class="tab active">Devices</button>
-    <button class="tab">Add a new device</button>
-  </div>
-
+<!-- <div class="container">
   <div class="device-list">
     <div class="device-item" *ngFor="let device of devices">
       <span>{{ device.name }}</span>
       <div class="actions">
         <button class="edit-btn">Edit</button>
-        <button class="readings-btn">Readings</button>
+        <button class="readings-btn" (click)="toReadings(device.id)">Readings</button>
       </div>
     </div>
   </div>
 </div>
-<br>
+<br> -->
+
+<table class="table table-striped mt-3 container-fluid">
+  <thead>
+    <tr>
+      <th>devices</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let device of devices" class="">
+      <td>{{ device.name}}</td>
+      <td class="text-end">
+        <button class="btn bg-dark text-white mx-2">Edit</button>
+        <button class="btn bg-dark text-white mx-2" (click)="toReadings(device.id)">Readings</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

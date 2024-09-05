@@ -23,20 +23,19 @@
    -->
 
 <div class="container">
-  <h2>Readings for Device: {{ device.id }} </h2>
+  <h2 *ngIf="device">Readings for Device: {{ device.id }} </h2>
 
   <!-- Dropdown Menu for Filtering -->
   <div class="form-group">
     <label for="filterType">Filter by Type:</label>
     <select id="filterType" class="form-control" [(ngModel)]="selectedType" (change)="filterData()" value="all">
       <option value="all">All</option>
-      <option value="power">Power</option>
-      <option value="current">Current</option>
-      <option value="voltage">Voltage</option>
+      <option value="1">Power</option>
+      <option value="2">Voltage</option>
+      <option value="3">Current</option>
     </select>
   </div>
 
-  <!-- Updated Table Structure -->
   <table class="table table-striped mt-3">
     <thead>
       <tr>
@@ -48,8 +47,30 @@
     <tbody>
       <tr *ngFor="let row of filteredData">
         <td>{{ row.timeStamp | date:'short' }}</td>
-        <td>{{ row.readingLKPId }}</td>
+        <td>{{ row.readingLKPId === 1 ? 'Power' : (
+          row.readingLKPId === 2 ? 'Voltage' : 'Current'
+          ) }}</td>
         <td>{{ row.readingValue }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>Max</th>
+        <th>Min</th>
+        <th>Avg</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ maxValue }}</td>
+        <td>{{ minValue }}</td>
+        <td>{{ avgValue }}</td>
       </tr>
     </tbody>
   </table>

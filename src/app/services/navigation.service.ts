@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
+type DATA = {
+  pageNumber: number;
+  deviceId?: number;
+};
+
 @Injectable({
   providedIn: 'root',
 })
 export class NavigationService {
-  private messageSubject = new Subject<number>();
+  private messageSubject = new Subject<DATA>();
   message$ = this.messageSubject.asObservable();
 
   constructor() {}
 
-  sendMessage(pageNumber: number) {
-    this.messageSubject.next(pageNumber);
+  sendMessage(pageNumber: number, deviceId?: number) {
+    this.messageSubject.next({ pageNumber, deviceId });
   }
 }
