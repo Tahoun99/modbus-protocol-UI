@@ -3,6 +3,7 @@ import { DeviceService } from './services/device.service';
 import { Device } from './models/device-model';
 import { NavigationService } from './services/navigation.service';
 import { Subscription } from 'rxjs';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
