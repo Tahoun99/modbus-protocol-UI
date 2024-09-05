@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DeviceNavigationService } from '../services/device-navigation.service';
 import { NavigationService } from '../services/navigation.service';
 import { DeviceService } from '../services/device.service';
@@ -8,15 +8,8 @@ import { DeviceService } from '../services/device.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
-  devices = [
-    { name: 'Device 1', id: 1 },
-    { name: 'Device 2', id: 2 },
-    { name: 'Device 3', id: 3 },
-    { name: 'Device 4', id: 4 },
-    { name: 'Device 5', id: 5 },
-    { name: 'Device 6', id: 6 },
-  ];
+export class HomeComponent implements OnInit {
+  devices: [];
 
   @Input() currentPage: number = 1;
 
@@ -24,6 +17,11 @@ export class HomeComponent {
     private deviceServices: DeviceService,
     private navigationServices: NavigationService
   ) {}
+  ngOnInit() {
+    this.deviceServices.getDevices().subscribe((data) => {
+      this.devices = data;
+    });
+  }
 
   toReadings(deviceId: number) {
     this.navigationServices.sendMessage(3, deviceId);
